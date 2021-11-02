@@ -26,3 +26,35 @@ boxplot(rse)
 
 cfs <- map_dbl(models, ~ coef(.x)[2])
 t.test(cfs, mu=0)
+
+
+
+# pridane Tamara
+dataset <- project
+
+# zistenie vsetkych premennych obsiahnutych v datasete
+dataset %>% colnames()
+
+# vybrane premenne pre hypotezu 1
+hypoteza1 <- dataset %>% select(Country, Obesity, Population, Deaths) %>% drop_na()
+hypoteza1 %>% summary()
+hypoteza1 %>% arrange(Obesity)
+hypoteza1 %>% arrange(desc(Obesity))
+hypoteza1 %>% arrange(Deaths)
+hypoteza1 %>% arrange(desc(Deaths))
+
+# grafy
+ggplot(data = hypoteza1, mapping = aes(x = Country, y = Obesity))+
+  geom_point(color = "red")
+
+ggplot(data = hypoteza1, mapping = aes(x = Country, y = Deaths))+
+  geom_point(color = "blue")
+
+# alternativa/ reprezentovat to cez boxplot
+hypoteza1 %>% select(Obesity) %>% boxplot()
+hypoteza1 %>% select(Deaths) %>% boxplot()
+
+# identifikovanie NA hodnot pre obezitu a umrtia
+dataset %>% select(Country, Obesity) %>% filter(is.na(Obesity))
+dataset %>% select(Country, Deaths) %>% filter(is.na(Deaths))
+
