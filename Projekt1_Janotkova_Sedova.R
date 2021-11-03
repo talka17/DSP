@@ -3,7 +3,10 @@ library(magrittr)
 library(gmodels)
 
 #reading dataset
-project <- read_csv("C:\\Users\\sedov\\Documents\\archive\\dataset.csv")
+project1 <- read_csv("C:\\Users\\sedov\\Documents\\archive\\dataset.csv")
+
+#pridane "ocistenie" od NA
+project <- project1 %>% select(Country, Obesity, Population, Deaths) %>% drop_na()
 
 fit <- lm(Deaths ~ Obesity, data = project)
 summary(fit)
@@ -27,7 +30,12 @@ boxplot(rse)
 cfs <- map_dbl(models, ~ coef(.x)[2])
 t.test(cfs, mu=0)
 
-
+#nasla som horizontalny histogram
+#45x20inches, portrait = exportovat a vyzera to ok 
+barplot(height=hypoteza1$Obesity, names=hypoteza1$Country,col="#69b3a2", las=2)
+#alebo dajme takto nazvy
+ggplot(data = hypoteza1, mapping = aes(x = Country, y = Obesity))+
+  geom_point(color = "red")+ theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
 # pridane Tamara
 dataset <- project
