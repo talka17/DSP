@@ -34,3 +34,30 @@ boxplot(rse)
 
 cfs <- map_dbl(models, ~ coef(.x)[2])
 t.test(cfs, mu=0)
+
+barplot(height=ourData$FruitsAndVegetables, names=ourData$Country,col="#69b3a2", las=2)
+
+#zistovanie NA
+project1 <- read_csv("C:\\Users\\sedov\\Documents\\archive\\dataset.csv")
+names(project1)[9] <- 'Fruits'
+ourData <- project %>% mutate(FruitsAndVegetables = (Fruits+Vegetables)/2) %>%
+  select(Country, Fruits, Vegetables, Population, Recovered, FruitsAndVegetables)
+
+ourData %>% select(Country, FruitsAndVegetables) %>% filter(is.na(FruitsAndVegetables))
+ourData %>% select(Country, Recovered) %>% filter(is.na(Recovered))
+
+# vybrane premenne pre hypotezu 2
+project1 <- read_csv("C:\\Users\\sedov\\Documents\\archive\\dataset.csv")
+
+project <- project1 %>% select(Country, 'Fruits - Excluding Wine', Vegetables,+
+  Population, Recovered) %>% drop_na()
+
+names(project)[2] <- 'Fruits'
+ourData <- project %>% mutate(FruitsAndVegetables = (Fruits+Vegetables)/2) %>% 
+  select(Country, Fruits, Vegetables, Population, Recovered, FruitsAndVegetables) %>% 
+  drop_na()
+ourData %>% summary()
+ourData %>% arrange(FruitsAndVegetables)
+ourData %>% arrange(desc(FruitsAndVegetables))
+ourData %>% arrange(Recovered)
+ourData %>% arrange(desc(Recovered))
