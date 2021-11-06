@@ -3,7 +3,7 @@ library(magrittr)
 library(gmodels)
 
 # precitanie pomocou read_csv z tidyverse, ktora csv ulozi do tibble
-dataset <- read_csv("Covid_food_kg_quantity.csv")
+dataset <- read_csv("dataset.csv")
 
 
 

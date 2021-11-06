@@ -5,7 +5,7 @@ library(magrittr)
 library(gmodels)
 
 #precitanie dat zo suboru 
-project1 <- read_csv("C:\\Users\\sedov\\Documents\\archive\\dataset.csv")
+project1 <- read_csv("dataset.csv")
 
 #-----PREDSTAVENIE DAT
 #premenovanie stlpca Fruits - Excluding Wines na Fruits
