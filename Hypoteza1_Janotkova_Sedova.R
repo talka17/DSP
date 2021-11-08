@@ -1,3 +1,7 @@
+# Autorky: Tamara Janotková, Natália Šeïová
+
+#hypoteza 1
+
 library(tidyverse)
 library(magrittr)
 library(gmodels)

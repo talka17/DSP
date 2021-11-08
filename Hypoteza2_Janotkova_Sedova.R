@@ -1,3 +1,5 @@
+# Autorky: Tamara Janotková, Natália Šeïová
+
 #hypoteza 2
 
 library(tidyverse)
